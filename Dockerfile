@@ -16,6 +16,7 @@ VOLUME ["/kafka"]
 ENV KAFKA_HOME /opt/kafka
 ENV PATH ${PATH}:${KAFKA_HOME}/bin
 ADD start-kafka.sh /usr/bin/start-kafka.sh
+ADD server.properties /opt/kafka/config/server.properties
 # The scripts need to have executable permission
 RUN chmod a+x /usr/bin/start-kafka.sh
 # Use "exec" form so that it runs as PID 1 (useful for graceful shutdown)
