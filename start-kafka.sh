@@ -1,3 +1,4 @@
+#!/bin/sh
 
 echo "${BROKER_ID}" >> $KAFKA_HOME/config/server.properties
 echo "${LISTENER_ADDR}" >> $KAFKA_HOME/config/server.properties
