@@ -9,7 +9,15 @@ RUN apk add --update unzip wget curl docker jq coreutils
 
 ENV KAFKA_VERSION=$kafka_version SCALA_VERSION=$scala_version
 ADD download-kafka.sh /tmp/download-kafka.sh
-RUN chmod a+x /tmp/download-kafka.sh && sync && /tmp/download-kafka.sh && tar xfz /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz -C /opt && rm /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz && ln -s /opt/kafka_${SCALA_VERSION}-${KAFKA_VERSION} /opt/kafka
+RUN chmod a+x /tmp/download-kafka.sh \
+            && sync \
+            && /tmp/download-kafka.sh \
+            && tar xfz /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz -C /opt \
+            && rm /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
+            && ln -s /opt/kafka_${SCALA_VERSION}-${KAFKA_VERSION} /opt/kafka \
+            && mkdir -p /var/kafka/log
+
+WORKDIR /opt/kafka
 
 VOLUME ["/kafka"]
 
