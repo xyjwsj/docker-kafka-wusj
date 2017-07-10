@@ -16,6 +16,8 @@ RUN chmod a+x /tmp/download-kafka.sh \
             && rm /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
             && ln -s /opt/kafka_${SCALA_VERSION}-${KAFKA_VERSION} /opt/kafka \
             && mkdir -p /var/kafka/log
+            
+EXPOSE 9092
 
 WORKDIR /opt/kafka
 
