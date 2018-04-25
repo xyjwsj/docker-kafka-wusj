@@ -1,6 +1,7 @@
 FROM anapsix/alpine-java
 
-ARG kafka_version=0.10.2.1
+ARG kafka_version=1.1.0
+#ARG kafka_version=0.10.2.1
 ARG scala_version=2.12
 
 MAINTAINER wusj
