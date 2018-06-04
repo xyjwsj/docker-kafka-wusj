@@ -48,7 +48,7 @@ JDK_OPTS=$JDK_OPTS" -XX:CMSInitiatingOccupancyFraction=80"
 JDK_OPTS=$JDK_OPTS" -XX:SoftRefLRUPolicyMSPerMB=0"
 JDK_OPTS=$JDK_OPTS" -Duser.timezone=Asia/Shanghai"
 
-export KAFKA_HEAP_OPTS=JDK_OPTS
+export KAFKA_HEAP_OPTS=${JDK_OPTS}
 
 EXTRA_ARGS=${EXTRA_ARGS-'-name kafkaServer -loggc'}
 
