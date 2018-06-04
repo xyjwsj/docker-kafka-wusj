@@ -25,30 +25,11 @@ if [ "x$KAFKA_LOG4J_OPTS" = "x" ]; then
     export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:$base_dir/../config/log4j.properties"
 fi
 
+export KAFKA_HEAP_OPTS=" -Xmx512m -Xms512m -Xmn256m -XX:PermSize=64m -Xss512k "
+
 if [ "x$KAFKA_HEAP_OPTS" = "x" ]; then
     export KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
 fi
-
-JDK_OPTS=$JDK_OPTS" -Xmx512m"
-JDK_OPTS=$JDK_OPTS" -Xms512m"
-JDK_OPTS=$JDK_OPTS" -Xmn256m"
-JDK_OPTS=$JDK_OPTS" -Xss512k"
-JDK_OPTS=$JDK_OPTS" -XX:MetaspaceSize=64m"
-JDK_OPTS=$JDK_OPTS" -XX:MaxMetaspaceSize=128m"
-JDK_OPTS=$JDK_OPTS" -XX:SurvivorRatio=3"
-JDK_OPTS=$JDK_OPTS" -XX:+DisableExplicitGC"
-JDK_OPTS=$JDK_OPTS" -XX:+UseConcMarkSweepGC"
-#JDK_OPTS=$JDK_OPTS" -XX:+UseParNewGC"
-JDK_OPTS=$JDK_OPTS" -XX:+UseCMSCompactAtFullCollection"
-JDK_OPTS=$JDK_OPTS" -XX:ParallelGCThreads=8"
-JDK_OPTS=$JDK_OPTS" -XX:CMSFullGCsBeforeCompaction=5"
-JDK_OPTS=$JDK_OPTS" -XX:+UseCMSCompactAtFullCollection"
-JDK_OPTS=$JDK_OPTS" -XX:GCTimeRatio=19"
-JDK_OPTS=$JDK_OPTS" -XX:CMSInitiatingOccupancyFraction=80"
-JDK_OPTS=$JDK_OPTS" -XX:SoftRefLRUPolicyMSPerMB=0"
-JDK_OPTS=$JDK_OPTS" -Duser.timezone=Asia/Shanghai"
-
-export KAFKA_HEAP_OPTS=${JDK_OPTS}
 
 EXTRA_ARGS=${EXTRA_ARGS-'-name kafkaServer -loggc'}
 
