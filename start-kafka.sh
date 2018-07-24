@@ -12,4 +12,6 @@ echo "zookeeper.connect=${ZOOKEEPER_CONNECT}" >> ${KAFKA_CFG}
 
 echo "broker.list=${BROKER_LIST}" >> ${KAFKA_CFG}
 
+echo "offsets.topic.replication.factor=${TOPIC_FACTOR}" >> ${KAFKA_CFG}
+
 exec $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
